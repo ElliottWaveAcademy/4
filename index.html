@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Elliott Wave Drag & Drop</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+  }
+
+  h2 {
+    text-align: center;
+    margin: 14px 0;
+  }
+
+  .container {
+    display: flex;
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px;
+    align-items: flex-start;
+  }
+
+  /* ================= SIDEBAR ================= */
+  .sidebar {
+    width: 200px;
+    height: 500px;               /* FIX: gleiche Höhe wie Chart */
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;            /* FIX: scroll statt Überstand */
+    margin-right: 15px;
+  }
+
+  .group {
+    margin-bottom: 14px;
+  }
+
+  .group-title {
+    font-size: 12px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2px;
+  }
+
+  .label {
+    background: #222;
+    color: #fff;
+    border-radius: 4px;
+    cursor: grab;
+    user-select: none;
+    text-align: center;
+    margin-bottom: 4px;
+    width: fit-content;
+  }
+
+  .large  { font-size: 20px; padding: 6px 14px; }
+  .medium { font-size: 16px; padding: 5px 12px; }
+  .small  { font-size: 13px; padding: 4px 10px; }
+
+  /* ================= CHART ================= */
+  .chart {
+    position: relative;
+    width: 800px;
+    height: 500px;
+  }
+
+  .chart img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .dropzone {
+    position: absolute;
+    border: 2px dashed #999;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #666;
+  }
+
+  .dropzone.large  { width: 90px; height: 42px; font-size: 20px; }
+  .dropzone.medium { width: 72px; height: 34px; font-size: 16px; }
+  .dropzone.small  { width: 58px; height: 28px; font-size: 13px; }
+
+  /* ================= RESET ================= */
+  .reset-wrapper {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .reset-btn {
+    padding: 7px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    background: #444;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .reset-btn:hover {
+    background: #222;
+  }
+</style>
+</head>
+
+<body>
+
+<h2>Move the waves to the correct position</h2>
+
+<div class="reset-wrapper">
+  <button class="reset-btn" id="resetBtn">Reset</button>
+</div>
+
+<div class="container">
+
+  <!-- ================= SIDEBAR ================= -->
+  <div class="sidebar">
+
+    <div class="group">
+      <div class="group-title">Largest Degree</div>
+      <div class="label large" draggable="true">I</div>
+      <div class="label large" draggable="true">II</div>
+    </div>
+
+    <div class="group">
+      <div class="group-title">Medium Degree</div>
+      <div class="label medium" draggable="true">(1)</div>
+      <div class="label medium" draggable="true">(2)</div>
+      <div class="label medium" draggable="true">(3)</div>
+      <div class="label medium" draggable="true">(4)</div>
+      <div class="label medium" draggable="true">(5)</div>
+      <div class="label medium" draggable="true">(a)</div>
+      <div class="label medium" draggable="true">(b)</div>
+      <div class="label medium" draggable="true">(c)</div>
+    </div>
+
+    <div class="group">
+      <div class="group-title">Small Degree</div>
+      <div class="label small" draggable="true">1</div>
+      <div class="label small" draggable="true">2</div>
+      <div class="label small" draggable="true">3</div>
+      <div class="label small" draggable="true">4</div>
+      <div class="label small" draggable="true">5</div>
+      <div class="label small" draggable="true">a</div>
+      <div class="label small" draggable="true">b</div>
+      <div class="label small" draggable="true">c</div>
+    </div>
+
+  </div>
+
+  <!-- ================= CHART ================= -->
+  <div class="chart">
+    <img src="https://github.com/ElliottWaveAcademy/elliott-dragdrop13/blob/main/%C3%9Cberschrift%20hinzuf%C3%BCgen%20-%202025-12-31T141101.045.png?raw=true">
+
+    <!-- LARGE -->
+    <div class="dropzone large"  style="top:30px;  left:30px;">?</div>
+    <div class="dropzone large"  style="top:80px;  left:30px;">?</div>
+
+    <!-- MEDIUM -->
+    <div class="dropzone medium" style="top:120px; left:200px;">?</div>
+    <div class="dropzone medium" style="top:170px; left:260px;">?</div>
+    <div class="dropzone medium" style="top:90px;  left:340px;">?</div>
+    <div class="dropzone medium" style="top:210px; left:400px;">?</div>
+    <div class="dropzone medium" style="top:40px;  left:480px;">?</div>
+    <div class="dropzone medium" style="top:180px; left:520px;">?</div>
+    <div class="dropzone medium" style="top:85px;  left:580px;">?</div>
+    <div class="dropzone medium" style="top:230px; left:620px;">?</div>
+
+    <!-- SMALL -->
+    <div class="dropzone small" style="top:260px; left:220px;">?</div>
+    <div class="dropzone small" style="top:300px; left:250px;">?</div>
+    <div class="dropzone small" style="top:220px; left:330px;">?</div>
+    <div class="dropzone small" style="top:340px; left:380px;">?</div>
+    <div class="dropzone small" style="top:200px; left:450px;">?</div>
+    <div class="dropzone small" style="top:320px; left:500px;">?</div>
+    <div class="dropzone small" style="top:260px; left:560px;">?</div>
+    <div class="dropzone small" style="top:360px; left:610px;">?</div>
+  </div>
+
+</div>
+
+<script>
+const labels = document.querySelectorAll('.label');
+const zones  = document.querySelectorAll('.dropzone');
+const resetBtn = document.getElementById('resetBtn');
+
+labels.forEach(label => {
+  label.addEventListener('dragstart', e => {
+    e.dataTransfer.setData('text', e.target.innerText);
+  });
+});
+
+zones.forEach(zone => {
+  zone.addEventListener('dragover', e => e.preventDefault());
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.innerText = e.dataTransfer.getData('text');
+    zone.style.border = '2px solid green';
+  });
+});
+
+resetBtn.addEventListener('click', () => {
+  zones.forEach(zone => {
+    zone.innerText = '?';
+    zone.style.border = '2px dashed #999';
+  });
+});
+</script>
+
+</body>
+</html>
